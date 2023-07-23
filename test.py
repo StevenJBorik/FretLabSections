@@ -1,14 +1,10 @@
 import msaf
-from io import BytesIO
-import tempfile
+import sys
 import os
 
-def process_audio(audio_content):
-    # Create a temporary file to write the audio content
-    audio_file = BytesIO(audio_content)
-
+def process_audio(audio_file_path):
     # Process the audio file using MSAF
-    boundaries, _ = msaf.process(audio_file, boundaries_id="scluster", feature='mfcc')
+    boundaries, _ = msaf.process(audio_file_path, boundaries_id="scluster", feature='mfcc')
 
     # Convert the boundaries to mm:ss format
     converted_boundaries = []
@@ -19,7 +15,14 @@ def process_audio(audio_content):
 
     return converted_boundaries
 
-
 if __name__ == '__main__':
-    # The testing part is removed as it's not needed when used within the Express API.
-    pass
+    # The first command line argument will be the file path
+    audio_file_path = sys.argv[1]
+    # Check if the provided file path exists
+    if not os.path.exists(audio_file_path):
+        print(f"Error: File not found: {audio_file_path}")
+        sys.exit(1)
+    
+    # Process the audio file and print the converted boundaries
+    converted_boundaries = process_audio(audio_file_path)
+    print("Converted boundaries (mm:ss):", converted_boundaries)

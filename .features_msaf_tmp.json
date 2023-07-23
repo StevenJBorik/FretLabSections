@@ -5,13 +5,13 @@
       "msaf": "0.1.80",
       "numpy": "1.23.5"
     },
-    "timestamp": "2023/07/21 20:33:28"
+    "timestamp": "2023/07/22 18:18:46"
   },
   "globals": {
     "dur": 115.81333333333333,
     "sample_rate": 22050,
     "hop_length": 1024,
-    "audio_file": "C:\\\\Dev\\\\git\\\\msaf\\\\nir.wav"
+    "audio_file": "C:\\Dev\\git\\FretSections\\temp\\nir.wav"
   },
   "est_beats": [
     0.2786394557823129,
