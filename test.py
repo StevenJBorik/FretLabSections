@@ -25,4 +25,4 @@ if __name__ == '__main__':
     
     # Process the audio file and print the converted boundaries
     converted_boundaries = process_audio(audio_file_path)
-    print("Converted boundaries (mm:ss):", converted_boundaries)
+    print(converted_boundaries)

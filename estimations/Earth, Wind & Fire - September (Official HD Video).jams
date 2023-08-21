@@ -194,7 +194,7 @@
       "sandbox": {
         "boundaries_id": "scluster",
         "labels_id": null,
-        "timestamp": "2023/07/22 18:17:55",
+        "timestamp": "2023/08/20 22:14:56",
         "annot_beats": false,
         "feature": "mfcc",
         "framesync": false,
