@@ -25,7 +25,7 @@ app.post('/api/process-audio', upload.single('file'), (req, res) => {
   fs.writeFileSync(tempFilePath, audioContent);
 
   // Pass the audio file path to the msaf.py script using child_process.exec
-  const command = `python "${msafScriptPath}" "${tempFilePath}"`;
+  const command = `python3 "${msafScriptPath}" "${tempFilePath}"`;
   const childProcess = exec(command, (error, stdout, stderr) => {
     if (error) {
       console.error('Error executing MSAF script:', error);
@@ -52,7 +52,7 @@ function parseOutput(output) {
 }
 
 
-const port = 5000;
+const port = 4000;
 app.listen(port, () => {
   console.log(`Server is running on http://localhost:${port}`);
 });
