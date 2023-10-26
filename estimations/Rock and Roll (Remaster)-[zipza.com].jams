@@ -62,7 +62,7 @@
       "sandbox": {
         "boundaries_id": "scluster",
         "labels_id": null,
-        "timestamp": "2023/10/06 09:52:52",
+        "timestamp": "2023/10/07 18:04:00",
         "annot_beats": false,
         "feature": "mfcc",
         "framesync": false,
@@ -138,7 +138,7 @@
       "sandbox": {
         "boundaries_id": "scluster",
         "labels_id": null,
-        "timestamp": "2023/10/06 09:53:01",
+        "timestamp": "2023/10/07 18:04:02",
         "annot_beats": false,
         "feature": "tonnetz",
         "framesync": false,
@@ -214,7 +214,7 @@
       "sandbox": {
         "boundaries_id": "scluster",
         "labels_id": null,
-        "timestamp": "2023/10/06 09:53:10",
+        "timestamp": "2023/10/07 18:04:03",
         "annot_beats": false,
         "feature": "cqt",
         "framesync": false,
@@ -290,7 +290,7 @@
       "sandbox": {
         "boundaries_id": "scluster",
         "labels_id": null,
-        "timestamp": "2023/10/06 09:53:11",
+        "timestamp": "2023/10/07 18:04:05",
         "annot_beats": false,
         "feature": "pcp",
         "framesync": false,
@@ -366,7 +366,7 @@
       "sandbox": {
         "boundaries_id": "scluster",
         "labels_id": null,
-        "timestamp": "2023/10/06 09:53:21",
+        "timestamp": "2023/10/07 18:04:07",
         "annot_beats": false,
         "feature": "tempogram",
         "framesync": false,
@@ -484,7 +484,7 @@
       "sandbox": {
         "boundaries_id": "olda",
         "labels_id": null,
-        "timestamp": "2023/10/06 09:53:23",
+        "timestamp": "2023/10/07 18:04:08",
         "annot_beats": false,
         "feature": "mfcc",
         "framesync": false,
@@ -598,7 +598,7 @@
       "sandbox": {
         "boundaries_id": "olda",
         "labels_id": null,
-        "timestamp": "2023/10/06 09:53:24",
+        "timestamp": "2023/10/07 18:04:10",
         "annot_beats": false,
         "feature": "tonnetz",
         "framesync": false,
@@ -712,7 +712,7 @@
       "sandbox": {
         "boundaries_id": "olda",
         "labels_id": null,
-        "timestamp": "2023/10/06 09:53:26",
+        "timestamp": "2023/10/07 18:04:11",
         "annot_beats": false,
         "feature": "cqt",
         "framesync": false,
@@ -826,7 +826,7 @@
       "sandbox": {
         "boundaries_id": "olda",
         "labels_id": null,
-        "timestamp": "2023/10/06 09:53:27",
+        "timestamp": "2023/10/07 18:04:12",
         "annot_beats": false,
         "feature": "pcp",
         "framesync": false,
@@ -940,7 +940,7 @@
       "sandbox": {
         "boundaries_id": "olda",
         "labels_id": null,
-        "timestamp": "2023/10/06 09:53:28",
+        "timestamp": "2023/10/07 18:04:14",
         "annot_beats": false,
         "feature": "tempogram",
         "framesync": false,
@@ -1030,7 +1030,7 @@
       "sandbox": {
         "boundaries_id": "foote",
         "labels_id": null,
-        "timestamp": "2023/10/06 09:53:29",
+        "timestamp": "2023/10/07 18:04:14",
         "annot_beats": false,
         "feature": "mfcc",
         "framesync": false,
@@ -1141,7 +1141,7 @@
       "sandbox": {
         "boundaries_id": "foote",
         "labels_id": null,
-        "timestamp": "2023/10/06 09:53:29",
+        "timestamp": "2023/10/07 18:04:15",
         "annot_beats": false,
         "feature": "tonnetz",
         "framesync": false,
@@ -1234,7 +1234,7 @@
       "sandbox": {
         "boundaries_id": "foote",
         "labels_id": null,
-        "timestamp": "2023/10/06 09:53:30",
+        "timestamp": "2023/10/07 18:04:15",
         "annot_beats": false,
         "feature": "cqt",
         "framesync": false,
@@ -1345,7 +1345,7 @@
       "sandbox": {
         "boundaries_id": "foote",
         "labels_id": null,
-        "timestamp": "2023/10/06 09:53:30",
+        "timestamp": "2023/10/07 18:04:16",
         "annot_beats": false,
         "feature": "pcp",
         "framesync": false,
@@ -1396,7 +1396,7 @@
       "sandbox": {
         "boundaries_id": "foote",
         "labels_id": null,
-        "timestamp": "2023/10/06 09:53:31",
+        "timestamp": "2023/10/07 18:04:17",
         "annot_beats": false,
         "feature": "tempogram",
         "framesync": false,
@@ -1434,31 +1434,31 @@
         {
           "time": 0.2786394557823129,
           "duration": 29.814421768707483,
-          "value": "D",
+          "value": "B",
           "confidence": null
         },
         {
           "time": 30.093061224489794,
           "duration": 12.678095238095239,
-          "value": "D",
+          "value": "E",
           "confidence": null
         },
         {
           "time": 42.77115646258503,
           "duration": 11.238458049886624,
-          "value": "D",
+          "value": "B",
           "confidence": null
         },
         {
           "time": 54.00961451247166,
           "duration": 47.18294784580499,
-          "value": "D",
+          "value": "E",
           "confidence": null
         },
         {
           "time": 101.19256235827665,
           "duration": 39.984761904761896,
-          "value": "C",
+          "value": "D",
           "confidence": null
         },
         {
@@ -1470,7 +1470,7 @@
         {
           "time": 208.46875283446713,
           "duration": 12.445895691609962,
-          "value": "D",
+          "value": "B",
           "confidence": null
         },
         {
@@ -1483,7 +1483,7 @@
       "sandbox": {
         "boundaries_id": "cnmf",
         "labels_id": null,
-        "timestamp": "2023/10/06 09:53:32",
+        "timestamp": "2023/10/07 18:04:18",
         "annot_beats": false,
         "feature": "mfcc",
         "framesync": false,
@@ -1524,36 +1524,36 @@
         {
           "time": 0.2786394557823129,
           "duration": 8.034104308390022,
-          "value": "B",
+          "value": "E",
           "confidence": null
         },
         {
           "time": 8.312743764172335,
-          "duration": 117.40009070294784,
+          "duration": 116.65705215419501,
+          "value": "B",
+          "confidence": null
+        },
+        {
+          "time": 124.96979591836735,
+          "duration": 7.058866213151916,
           "value": "C",
           "confidence": null
         },
         {
-          "time": 125.71283446712017,
-          "duration": 5.619229024943323,
-          "value": "E",
+          "time": 132.02866213151927,
+          "duration": 32.554376417233556,
+          "value": "B",
           "confidence": null
         },
         {
-          "time": 131.3320634920635,
-          "duration": 33.99401360544218,
+          "time": 164.58303854875282,
+          "duration": 3.622312925170064,
           "value": "C",
           "confidence": null
         },
         {
-          "time": 165.32607709750567,
-          "duration": 0.6965986394557717,
-          "value": "E",
-          "confidence": null
-        },
-        {
-          "time": 166.02267573696145,
-          "duration": 39.05596371882086,
+          "time": 168.2053514739229,
+          "duration": 36.87328798185942,
           "value": "D",
           "confidence": null
         },
@@ -1579,7 +1579,7 @@
       "sandbox": {
         "boundaries_id": "cnmf",
         "labels_id": null,
-        "timestamp": "2023/10/06 09:53:33",
+        "timestamp": "2023/10/07 18:04:19",
         "annot_beats": false,
         "feature": "tonnetz",
         "framesync": false,
@@ -1620,73 +1620,31 @@
         {
           "time": 0.2786394557823129,
           "duration": 7.2910657596371875,
-          "value": "D",
+          "value": "E",
           "confidence": null
         },
         {
           "time": 7.569705215419501,
-          "duration": 33.111655328798186,
+          "duration": 97.84888888888888,
           "value": "B",
           "confidence": null
         },
         {
-          "time": 40.68136054421769,
-          "duration": 7.012426303854873,
+          "time": 105.41859410430838,
+          "duration": 36.45532879818596,
           "value": "B",
           "confidence": null
         },
         {
-          "time": 47.69378684807256,
-          "duration": 26.749387755102035,
-          "value": "B",
-          "confidence": null
-        },
-        {
-          "time": 74.4431746031746,
-          "duration": 31.67201814058957,
-          "value": "B",
-          "confidence": null
-        },
-        {
-          "time": 106.11519274376417,
-          "duration": 18.854603174603184,
-          "value": "B",
-          "confidence": null
-        },
-        {
-          "time": 124.96979591836735,
-          "duration": 10.58829931972788,
-          "value": "B",
-          "confidence": null
-        },
-        {
-          "time": 135.55809523809523,
-          "duration": 23.359274376417233,
-          "value": "E",
-          "confidence": null
-        },
-        {
-          "time": 158.91736961451247,
-          "duration": 12.910294784580515,
-          "value": "C",
-          "confidence": null
-        },
-        {
-          "time": 171.82766439909298,
-          "duration": 14.071292517006782,
-          "value": "E",
-          "confidence": null
-        },
-        {
-          "time": 185.89895691609976,
-          "duration": 20.34068027210884,
-          "value": "C",
+          "time": 141.87392290249434,
+          "duration": 64.36571428571426,
+          "value": "D",
           "confidence": null
         },
         {
           "time": 206.2396371882086,
           "duration": 14.675011337868483,
-          "value": "D",
+          "value": "E",
           "confidence": null
         },
         {
@@ -1699,7 +1657,7 @@
       "sandbox": {
         "boundaries_id": "cnmf",
         "labels_id": null,
-        "timestamp": "2023/10/06 09:53:34",
+        "timestamp": "2023/10/07 18:04:20",
         "annot_beats": false,
         "feature": "cqt",
         "framesync": false,
@@ -1740,24 +1698,12 @@
         {
           "time": 0.2786394557823129,
           "duration": 9.427301587301587,
-          "value": "D",
-          "confidence": null
-        },
-        {
-          "time": 9.7059410430839,
-          "duration": 30.97541950113379,
           "value": "E",
           "confidence": null
         },
         {
-          "time": 40.68136054421769,
-          "duration": 6.315827664399087,
-          "value": "C",
-          "confidence": null
-        },
-        {
-          "time": 46.99718820861678,
-          "duration": 27.44598639455782,
+          "time": 9.7059410430839,
+          "duration": 64.7372335600907,
           "value": "B",
           "confidence": null
         },
@@ -1770,7 +1716,7 @@
         {
           "time": 85.17079365079366,
           "duration": 13.235374149659862,
-          "value": "E",
+          "value": "C",
           "confidence": null
         },
         {
@@ -1787,32 +1733,32 @@
         },
         {
           "time": 124.96979591836735,
-          "duration": 12.724535147392274,
-          "value": "C",
+          "duration": 11.33133786848073,
+          "value": "D",
           "confidence": null
         },
         {
-          "time": 137.69433106575963,
-          "duration": 21.22303854875284,
+          "time": 136.30113378684808,
+          "duration": 22.616235827664383,
           "value": "B",
           "confidence": null
         },
         {
           "time": 158.91736961451247,
           "duration": 10.774058956916093,
-          "value": "C",
+          "value": "D",
           "confidence": null
         },
         {
           "time": 169.69142857142856,
           "duration": 33.204535147392306,
-          "value": "E",
+          "value": "C",
           "confidence": null
         },
         {
           "time": 202.89596371882087,
           "duration": 12.910294784580486,
-          "value": "D",
+          "value": "E",
           "confidence": null
         },
         {
@@ -1831,7 +1777,7 @@
       "sandbox": {
         "boundaries_id": "cnmf",
         "labels_id": null,
-        "timestamp": "2023/10/06 09:53:35",
+        "timestamp": "2023/10/07 18:04:21",
         "annot_beats": false,
         "feature": "pcp",
         "framesync": false,
@@ -1871,49 +1817,49 @@
         },
         {
           "time": 0.2786394557823129,
-          "duration": 6.594467120181405,
+          "duration": 7.2910657596371875,
+          "value": "E",
+          "confidence": null
+        },
+        {
+          "time": 7.569705215419501,
+          "duration": 47.83310657596372,
           "value": "D",
           "confidence": null
         },
         {
-          "time": 6.873106575963718,
-          "duration": 81.08408163265307,
-          "value": "B",
+          "time": 55.40281179138322,
+          "duration": 24.706031746031748,
+          "value": "C",
+          "confidence": null
+        },
+        {
+          "time": 80.10884353741497,
+          "duration": 7.848344671201815,
+          "value": "C",
           "confidence": null
         },
         {
           "time": 87.95718820861678,
-          "duration": 41.23863945578232,
-          "value": "C",
-          "confidence": null
-        },
-        {
-          "time": 129.1958276643991,
-          "duration": 7.801904761904751,
-          "value": "C",
-          "confidence": null
-        },
-        {
-          "time": 136.99773242630386,
-          "duration": 17.647165532879825,
-          "value": "C",
-          "confidence": null
-        },
-        {
-          "time": 154.64489795918368,
-          "duration": 19.272562358276645,
+          "duration": 72.35337868480725,
           "value": "B",
           "confidence": null
         },
         {
-          "time": 173.91746031746032,
-          "duration": 30.464580498866212,
-          "value": "C",
+          "time": 160.31056689342404,
+          "duration": 12.910294784580486,
+          "value": "D",
           "confidence": null
         },
         {
-          "time": 204.38204081632654,
-          "duration": 16.53260770975055,
+          "time": 173.22086167800452,
+          "duration": 30.418140589569163,
+          "value": "B",
+          "confidence": null
+        },
+        {
+          "time": 203.6390022675737,
+          "duration": 17.2756462585034,
           "value": "E",
           "confidence": null
         },
@@ -1927,7 +1873,7 @@
       "sandbox": {
         "boundaries_id": "cnmf",
         "labels_id": null,
-        "timestamp": "2023/10/06 09:53:36",
+        "timestamp": "2023/10/07 18:04:24",
         "annot_beats": false,
         "feature": "tempogram",
         "framesync": false,
@@ -2023,7 +1969,7 @@
       "sandbox": {
         "boundaries_id": "sf",
         "labels_id": null,
-        "timestamp": "2023/10/06 09:53:37",
+        "timestamp": "2023/10/07 18:04:24",
         "annot_beats": false,
         "feature": "mfcc",
         "framesync": false,
@@ -2112,7 +2058,7 @@
       "sandbox": {
         "boundaries_id": "sf",
         "labels_id": null,
-        "timestamp": "2023/10/06 09:53:37",
+        "timestamp": "2023/10/26 14:36:12",
         "annot_beats": false,
         "feature": "tonnetz",
         "framesync": false,
@@ -2219,7 +2165,7 @@
       "sandbox": {
         "boundaries_id": "sf",
         "labels_id": null,
-        "timestamp": "2023/10/06 09:53:38",
+        "timestamp": "2023/10/07 18:04:25",
         "annot_beats": false,
         "feature": "cqt",
         "framesync": false,
@@ -2308,7 +2254,7 @@
       "sandbox": {
         "boundaries_id": "sf",
         "labels_id": null,
-        "timestamp": "2023/10/06 09:53:38",
+        "timestamp": "2023/10/07 18:04:26",
         "annot_beats": false,
         "feature": "pcp",
         "framesync": false,
@@ -2397,7 +2343,7 @@
       "sandbox": {
         "boundaries_id": "sf",
         "labels_id": null,
-        "timestamp": "2023/10/06 09:53:39",
+        "timestamp": "2023/10/07 18:04:27",
         "annot_beats": false,
         "feature": "tempogram",
         "framesync": false,

@@ -23,6 +23,7 @@ app.post('/api/process-audio', upload.single('file'), (req, res) => {
   // Create a temporary file to write the audio content
   const tempFilePath = path.join(tempDir, req.file.originalname);
   fs.writeFileSync(tempFilePath, audioContent);
+  console.log(`Audio file written to: ${tempFilePath}`);
 
   // Pass the audio file path to the msaf.py script using child_process.exec
   const command = `python3 "${msafScriptPath}" "${tempFilePath}"`;
