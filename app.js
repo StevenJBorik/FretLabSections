@@ -3,11 +3,48 @@ const multer = require('multer');
 const { exec } = require('child_process');
 const path = require('path');
 const fs = require('fs'); // Import the 'fs' module
-
+const youtubedl = require('youtube-dl-exec')
+const cors = require('cors');
 const app = express();
 const upload = multer();
 
+app.use(express.json());
+
+
+app.use(cors());
+
 const msafScriptPath = 'test.py'; // Replace with the path to the msaf.py script
+
+app.post('/api/process-youtube-link', async (req, res) => {
+  const link = req.body.link;
+
+  // Convert YouTube link to MP3
+  youtubedl(link, ['-x', '--audio-format', 'mp3'], {}, (err, output) => {
+    if (err) {
+      return res.status(500).send({ error: "Failed to convert YouTube link to MP3." });
+    }
+
+    const mp3FilePath = output.find((line) => line.endsWith('.mp3'));
+    
+    // Read and return the MP3 file content
+    fs.readFile(mp3FilePath, (err, data) => {
+      if (err) {
+        return res.status(500).send({ error: "Failed to read the MP3 file." });
+      }
+
+      res.send({ mp3: data });
+
+      // Delete the file after sending the data to the client
+      fs.unlink(mp3FilePath, (err) => {
+        if (err) {
+          console.error("Failed to delete the MP3 file:", err);
+        } else {
+          console.log("MP3 file deleted successfully:", mp3FilePath);
+        }
+      });
+    });
+  });
+});
 
 app.post('/api/process-audio', upload.single('file'), (req, res) => {
   console.log('Received audio file:', req.file);
