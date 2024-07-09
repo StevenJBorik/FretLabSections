@@ -1,6 +1,7 @@
 import msaf
 import sys
 import os
+import json
 
 def process_audio(audio_file_path):
     # Process the audio file using MSAF
@@ -28,13 +29,12 @@ if __name__ == '__main__':
     # The first command line argument will be the file path
     audio_file_path = sys.argv[1]
     # Check if the provided file path exists
-    print(f"Received audio file path: {audio_file_path}")
     if not os.path.exists(audio_file_path):
         print(f"Error: File not found: {audio_file_path}")
         sys.exit(1)
     
     # Process the audio file and print the converted boundaries
     converted_boundaries = process_audio(audio_file_path)
-    print(converted_boundaries)
+    print(json.dumps(converted_boundaries))
 
 

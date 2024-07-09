@@ -1,10 +1,24 @@
 {
   "dependencies": {
     "@distube/ytdl-core": "^4.13.2",
+    "@opentelemetry/api": "^1.9.0",
+    "@opentelemetry/auto-instrumentations-node": "^0.47.1",
+    "@opentelemetry/exporter-otlp-grpc": "^0.26.0",
+    "@opentelemetry/exporter-trace-otlp-http": "^0.52.0",
+    "@opentelemetry/node": "^0.24.0",
+    "@opentelemetry/sdk-node": "^0.52.1",
+    "@opentelemetry/tracing": "^0.24.0",
+    "axios": "^1.7.2",
     "child_process": "^1.0.2",
     "cors": "^2.8.5",
-    "express": "^4.18.2",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "git-filter-repo": "^0.0.30",
+    "glob": "^10.3.10",
     "multer": "^1.4.5-lts.1",
+    "pg": "^8.12.0",
+    "winston": "^3.13.0",
+    "winston-daily-rotate-file": "^5.0.0",
     "youtube-dl-exec": "^2.4.16",
     "youtube-mp3-downloader": "^0.7.11"
   }
