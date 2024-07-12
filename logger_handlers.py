@@ -114,7 +114,7 @@ class SigNozHandler(logging.Handler):
                     }
                 ]
             }
-            requests.post("http://localhost:4318/v1/logs", json=log_data)
+            requests.post("http://signoz:4318/v1/logs", json=log_data)
         except requests.exceptions.RequestException as e:
             with self.app.app_context():
                 current_app.logger.error("Failed to log to SigNoz: %s", e)

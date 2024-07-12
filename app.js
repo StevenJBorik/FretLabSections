@@ -15,11 +15,20 @@ const app = express();
 const upload = multer();
 
 app.use(express.json());
-app.use(cors());
-
+app.use(cors({
+  origin: ['http://key-finder-web:3000', 'http://localhost:3000', 'http://172.21.0.4:3000']
+}));
 const msafScriptPath = path.join(__dirname, 'test.py');
 
 app.post('/api/process-audio', upload.single('file'), (req, res) => {
+  console.log('Received request to /api/process-audio');
+  console.log('Request headers:', req.headers);
+  console.log('Request body:', req.body);
+  console.log('Request file:', req.file);
+
+  if (!req.file) {
+    return res.status(400).json({ error: 'No file uploaded' });
+  }
   const span = trace.getTracer('default').startSpan('process_audio');
 
   logger.info('Received audio file', { file: req.file });
@@ -104,8 +113,12 @@ app.post('/api/process-audio', upload.single('file'), (req, res) => {
   });
 });
 
+app.get('/', (req, res) => {
+  res.send('Server is running');
+});
+
 const port = process.env.PORT || 4000; // Use PORT env variable if set, otherwise default to 4000
-app.listen(port, () => {
-  logger.info(`Server is running on http://localhost:${port}`);
-  console.log(`Server is running on http://localhost:${port}`);
+app.listen(port, '0.0.0.0', () => {
+  logger.info(`Server is running on http://0.0.0.0:${port}`);
+  console.log(`Server is running on http://0.0.0.0:${port}`);
 });
