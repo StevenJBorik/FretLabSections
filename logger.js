@@ -1,4 +1,3 @@
-const axios = require('axios');
 const { Client } = require('pg');
 const { createLogger, format, transports } = require('winston');
 require('winston-daily-rotate-file');
@@ -39,50 +38,6 @@ const logToDatabase = async (level, message, context, serviceName) => {
   }
 };
 
-const logToSigNoz = async (level, message, context, serviceName) => {
-  if (level === 'error' || level === 'critical') {
-    const sigNozLogData = {
-      resourceLogs: [
-        {
-          resource: {
-            attributes: [
-              { key: 'service.name', value: { stringValue: serviceName } },
-            ],
-          },
-          scopeLogs: [
-            {
-              scope: { name: 'backend_logger', version: '1.0.0' },
-              logRecords: [
-                {
-                  timeUnixNano: `${Date.now() * 1e6}`,
-                  severityNumber: level === 'error' ? 17 : 18, // Corresponding severity for SigNoz
-                  severityText: level.toUpperCase(),
-                  body: { stringValue: message },
-                  attributes: [
-                    { key: 'module', value: { stringValue: context.module || '' } },
-                    { key: 'funcName', value: { stringValue: context.funcName || '' } },
-                  ],
-                },
-              ],
-            },
-          ],
-        },
-      ],
-    };
-
-    try {
-      await axios.post(process.env.SIGNOZ_ENDPOINT, sigNozLogData);
-    } catch (error) {
-      console.error('Error sending log to SigNoz:', error);
-    }
-  }
-};
-
-const log = async (level, message, context = {}, serviceName = 'fretlabs_client') => {
-  await logToDatabase(level, message, context, serviceName);
-  await logToSigNoz(level, message, context, serviceName);
-};
-
 const logger = createLogger({
   level: 'info',
   format: format.combine(
@@ -93,12 +48,6 @@ const logger = createLogger({
   ),
   transports: [
     new transports.Console(),
-    new transports.Http({
-      format: format.json(),
-      host: 'localhost',
-      port: 4318,
-      path: '/v1/logs',
-    }),
     new transports.DailyRotateFile({
       filename: 'logs/application-%DATE%.log',
       datePattern: 'YYYY-MM-DD-HH',
@@ -109,12 +58,14 @@ const logger = createLogger({
   ],
 });
 
+const log = async (level, message, context = {}, serviceName = 'fretlabs_client') => {
+  await logToDatabase(level, message, context, serviceName);
+  logger.log(level, message, context);
+};
+
 const logInfo = (message, context) => log('info', message, context);
 const logWarn = (message, context) => log('warn', message, context);
-const logError = (message, context) => {
-  log('error', message, context);
-  logger.error(message, context); // Ensure error logs go to the console as well
-};
+const logError = (message, context) => log('error', message, context);
 
 module.exports = {
   info: logInfo,

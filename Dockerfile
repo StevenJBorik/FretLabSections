@@ -20,7 +20,11 @@ RUN apt-get update && apt-get install -y \
     libsuitesparse-dev \
     gfortran \
     pkg-config \
-    libopenblas-dev
+    libopenblas-dev \
+    libsndfile1 \
+    libsndfile1-dev \
+    ffmpeg \
+    libavcodec-extra
 
 # Set environment variables for CVXOPT
 ENV CVXOPT_SUITESPARSE_INC_DIR=/usr/include/suitesparse

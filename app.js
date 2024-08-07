@@ -7,20 +7,27 @@ const path = require('path');
 const fs = require('fs');
 const cors = require('cors');
 const { exec } = require('child_process');
-const { trace, SpanStatusCode } = require('@opentelemetry/api');
 const logger = require('./logger'); // Use the correct relative path
 const { Pool } = require('pg');
 
 const app = express();
-const upload = multer();
+const upload = multer({
+  limits: { fileSize: 100 * 1024 * 1024 } 
+});
 
-app.use(express.json());
+app.use(express.json({ limit: '100mb' }));
+app.use(express.urlencoded({ limit: '100mb', extended: true }));
 app.use(cors({
-  origin: ['http://key-finder-web:3000', 'http://localhost:3000', 'http://172.21.0.4:3000']
+  origin: ['http://key-finder-web:3000', 'http://localhost:3000', 'http://172.21.0.4:3000'],
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization'],
+  maxAge: 600,
+  preflightContinue: false,
+  optionsSuccessStatus: 204
 }));
 const msafScriptPath = path.join(__dirname, 'test.py');
 
-app.post('/api/process-audio', upload.single('file'), (req, res) => {
+app.post('/sections/api/process-audio', upload.single('file'), (req, res) => {
   console.log('Received request to /api/process-audio');
   console.log('Request headers:', req.headers);
   console.log('Request body:', req.body);
@@ -29,8 +36,6 @@ app.post('/api/process-audio', upload.single('file'), (req, res) => {
   if (!req.file) {
     return res.status(400).json({ error: 'No file uploaded' });
   }
-  const span = trace.getTracer('default').startSpan('process_audio');
-
   logger.info('Received audio file', { file: req.file });
   console.log('Received audio file:', req.file);
 
@@ -43,53 +48,54 @@ app.post('/api/process-audio', upload.single('file'), (req, res) => {
 
   const tempFilePath = path.join(tempDir, req.file.originalname);
   fs.writeFileSync(tempFilePath, audioContent);
+  fs.chmodSync(tempFilePath, 0o644);
+  console.log('File size:', fs.statSync(tempFilePath).size);
+  console.log('File exists:', fs.existsSync(tempFilePath));
   logger.info('Audio file written to', { tempFilePath });
   console.log('Audio file written to:', tempFilePath);
-  span.setAttribute('tempFilePath', tempFilePath);
+
+  if (fs.existsSync(tempFilePath)) {
+    console.log('File exists at:', tempFilePath);
+  } else {
+    console.error('File does not exist at:', tempFilePath);
+    return res.status(500).json({ error: 'File not found' });
+  }
+
 
   const command = `python3 "${msafScriptPath}" "${tempFilePath}"`;
   console.log('Executing command:', command);
 
   const childProcess = exec(command, (error, stdout, stderr) => {
     if (error) {
-      logger.error('Error executing MSAF script', { error, module: 'process_audio', funcName: 'exec' });
-      console.error('Error executing MSAF script:', error);
-      span.recordException(error);
-      span.setStatus({ code: SpanStatusCode.ERROR, message: 'Internal server error' });
-      span.end();
-      return res.status(500).json({ error: 'Internal server error' });
+        logger.error('Error executing MSAF script', { error, module: 'process_audio', funcName: 'exec' });
+        console.error('Error executing MSAF script:', error);
+        return res.status(500).json({ error: 'Internal server error' });
     }
 
     if (stderr) {
-      logger.warn('Python script stderr', { stderr, module: 'process_audio', funcName: 'exec' });
-      console.warn('Python script stderr:', stderr);
+        logger.warn('Python script stderr', { stderr, module: 'process_audio', funcName: 'exec' });
+        console.warn('Python script stderr:', stderr);
     }
- 
+
     console.log('Python script stdout:', stdout);
 
     try {
-      const boundaries = JSON.parse(stdout);
-      logger.info('Parsed boundaries', { boundaries });
-      console.log('Parsed boundaries:', boundaries);
-      res.json({ sections: boundaries });
-
-      fs.unlink(tempFilePath, (err) => {
-        if (err) {
-          logger.error('Failed to delete the audio file', { err, module: 'process_audio', funcName: 'unlink' });
-          console.error('Failed to delete the audio file:', err);
-        } else {
-          logger.info('Audio file deleted successfully', { tempFilePath });
-          console.log('Audio file deleted successfully:', tempFilePath);
+        const result = JSON.parse(stdout.trim());
+        if (result.error) {
+            throw new Error(result.error);
         }
-      });
+        const boundaries = result.boundaries;
+        logger.info('Parsed boundaries', { boundaries });
+        console.log('Parsed boundaries:', boundaries);
+        res.json({ sections: boundaries });
+
+        // ... (rest of the code for file deletion)
 
     } catch (parseError) {
-      logger.error('Error parsing output', { parseError, module: 'process_audio', funcName: 'JSON.parse' });
-      console.error('Error parsing output:', parseError);
-      span.recordException(parseError);
-      span.setStatus({ code: SpanStatusCode.ERROR, message: 'Error parsing boundaries' });
-      span.end();
-      res.status(500).json({ error: 'Error parsing boundaries' });
+        logger.error('Error parsing output', { parseError, stdout, module: 'process_audio', funcName: 'JSON.parse' });
+        console.error('Error parsing output:', parseError);
+        console.error('Raw stdout:', stdout);
+        res.status(500).json({ error: 'Error parsing boundaries' });
 
       fs.unlink(tempFilePath, (err) => {
         if (err) {
@@ -101,7 +107,6 @@ app.post('/api/process-audio', upload.single('file'), (req, res) => {
         }
       });
     }
-    span.end();
   });
 
   childProcess.stdout.on('data', (data) => {
